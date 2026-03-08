@@ -4,12 +4,17 @@ on:
 
 jobs:
   vhs:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: charmbracelet/vhs-action@v1
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v4
         with:
-          path: 'vhs.tape'
+          go-version: '1.25.6'
+      - name: Install VHS
+        run: go install github.com/charmbracelet/vhs@latest
+      - name: Render VHS tape
+        run: vhs vhs.tape -o demo.gif
       - uses: stefanzweifel/git-auto-commit-action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
