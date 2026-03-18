@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"strings"
 	"time"
 
 	"github.com/charmbracelet/huh"
@@ -10,6 +11,8 @@ import (
 	"github.com/stikypiston/jots/internal/models"
 	"github.com/stikypiston/jots/internal/storage"
 )
+
+var attachmentFlag string
 
 var addCmd = &cobra.Command{
 	Use:   "add",
@@ -22,26 +25,40 @@ var addCmd = &cobra.Command{
 		var attach bool
 		var attachmentPath string
 
-		form := huh.NewForm(
-			huh.NewGroup(
-				huh.NewText().
-					Title("Entry text").
-					Value(&content),
+		// non-interactive mode
+		if len(args) > 0 {
+			content = strings.Join(args, " ")
+		} else {
+			form := huh.NewForm(
+				huh.NewGroup(
+					huh.NewText().
+						Title("Entry text").
+						Value(&content),
 
-				huh.NewConfirm().
-					Title("Add attachment?").
-					Value(&attach),
-			),
-		)
+					huh.NewConfirm().
+						Title("Add attachment?").
+						Value(&attach),
+				),
+			)
 
-		err := form.Run()
-		if err != nil {
-			return err
+			err := form.Run()
+			if err != nil {
+				return err
+			}
 		}
 
 		var attachments []models.Attachment
 
-		if attach {
+		if attachmentFlag != "" {
+			a, err := storage.CopyAttachment(attachmentFlag)
+			if err != nil {
+				return err
+			}
+
+			attachments = append(attachments, a)
+		}
+
+		if attach && attachmentFlag == "" {
 			err := huh.NewInput().
 				Title("Attachment path").
 				Value(&attachmentPath).
@@ -81,4 +98,5 @@ var addCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(addCmd)
+	addCmd.Flags().StringVarP(&attachmentFlag, "attachment", "a", "", "Absolute path to attachment")
 }
