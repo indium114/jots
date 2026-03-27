@@ -1,7 +1,7 @@
 # jots
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/StikyPiston/jots)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/stikypiston/jots/build.yml)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/indium114/jots)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/indium114/jots/build.yml)
 
 [![asciicast](https://asciinema.org/a/831290.svg)](https://asciinema.org/a/831290)
 
@@ -64,7 +64,7 @@ Simply add the repo to your flake inputs...
 
 ```nix
 inputs = {
-  spyglass.url = "github:stikypiston/jots";
+  spyglass.url = "github:indium114/jots";
 };
 ```
 
@@ -81,7 +81,7 @@ environment.systemPackages = [
 To install, simply run:
 
 ```shell
-go install github.com/stikypiston/jots@latest
+go install github.com/indium114/jots@latest
 ```
 
 ## Usage

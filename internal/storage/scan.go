@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/stikypiston/jots/internal/models"
+	"github.com/indium114/jots/internal/models"
 )
 
 func ScanEntries() ([]models.Entry, error) {

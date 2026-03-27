@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/stikypiston/jots/internal/models"
+	"github.com/indium114/jots/internal/models"
 )
 
 func dayFilePath(t time.Time) string {

@@ -1,4 +1,4 @@
-module github.com/stikypiston/jots
+module github.com/indium114/jots
 
 go 1.25.5
 

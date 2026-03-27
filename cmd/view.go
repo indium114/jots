@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/stikypiston/jots/internal/storage"
-	"github.com/stikypiston/jots/internal/ui"
+	"github.com/indium114/jots/internal/storage"
+	"github.com/indium114/jots/internal/ui"
 )
 
 var viewCmd = &cobra.Command{

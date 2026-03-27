@@ -8,8 +8,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 
-	"github.com/stikypiston/jots/internal/models"
-	"github.com/stikypiston/jots/internal/storage"
+	"github.com/indium114/jots/internal/models"
+	"github.com/indium114/jots/internal/storage"
 )
 
 var attachmentFlag string

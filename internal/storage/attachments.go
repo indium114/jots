@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/google/uuid"
-	"github.com/stikypiston/jots/internal/models"
+	"github.com/indium114/jots/internal/models"
 )
 
 func canonicalPath(p string) (string, error) {
